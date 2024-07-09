@@ -1,0 +1,39 @@
+@for $i from 1 through 604{
+    @font-face {
+        font-family: 'hamada#{$i}';
+        src: url(../../assets/woff/p#{$i}.woff) format("woff");
+      }
+}
+@for $i from 1 through 604{
+    .code_v1-#{$i}  ._Word {
+        font-family: 'hamada#{$i}';
+    }
+}
+
+.List{
+  position: absolute  !important;
+  width: 100% !important;
+  right: 0;
+}
+.List > div{
+  margin-top: 120px;
+    // background-color: rgb(68, 18, 18);
+
+    width: 75% !important;
+    // margin-top: 100px;
+    margin-inline: auto !important;
+    // direction: rtl;
+    // position: relative;
+}
+.ReactVirtualized__Grid__innerScrollContainer{
+  display: flex !important;
+  justify-self: end;
+}
+@media only screen and (max-width: 640px) {
+ .List>div{
+  
+  width:calc(100% - 3em) !important;
+  box-sizing:border-box
+ }
+}
+

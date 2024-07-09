@@ -1,0 +1,1 @@
+export const  baseUrl = 'https://api.quran.com/api/v4';
