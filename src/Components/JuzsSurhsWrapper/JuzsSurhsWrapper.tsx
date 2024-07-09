@@ -9,20 +9,20 @@ type Props = {
 
 }
 
-function JuzsSurhsWrapper({}: Props) {
-  function classNames(...classes:any) {
+function JuzsSurhsWrapper({ }: Props) {
+  function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
   }
-    const [Tap, setTap] = useState<boolean>(false)
-    const reading:string[] = ["Surh","Juzs"]
-    const components :ReactNode = [<Surhs/>,<Jusz />]
-    return <>
+  const [Tap, setTap] = useState<boolean>(false)
+  const reading: string[] = ["Surh", "Juzs"]
+  const components: ReactNode[] = [<Surhs />, <Jusz />]
+  return <>
     <div className=" max-w-6xl  mx-auto py-16 px-4 sm:px-[3rem] ">
       <Tab.Group>
         <Tab.List className="flex space-x-1 ">
-          {reading.map((category) => (
+          {reading.map((category, i) => (
             <Tab
-              key={category}
+              key={i}
               className={({ selected }) =>
                 classNames(
                   ' text-black p-2.5 text-sm font-medium leading-5',
@@ -38,14 +38,14 @@ function JuzsSurhsWrapper({}: Props) {
           ))}
         </Tab.List>
         <Tab.Panels className="mt-2">
-          {components.map((compo:any,i:number)=>
+          {components.map((compo: any, i: number) =>
             <Tab.Panel key={i}>
               {compo}
             </Tab.Panel>
-            )}
+          )}
         </Tab.Panels>
       </Tab.Group>
     </div>
-    </>
+  </>
 }
 export default JuzsSurhsWrapper;

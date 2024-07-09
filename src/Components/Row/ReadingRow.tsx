@@ -14,9 +14,10 @@ type Props = {
   // filterd: any
 };
 
-type Audio = [
-  audio_url: HTMLAudioElement
-]
+type Audio = {
+  audio_url?: HTMLAudioElement,
+  segments?: any[]
+}
 
 let prevScrollPos = 0;
 function ReadingRow({ chapter, paramId }: Props) {
@@ -38,7 +39,7 @@ function ReadingRow({ chapter, paramId }: Props) {
   const [isCacheReady, setIsCacheReady] = useState<boolean>(false);
   const [headerSwitcher, setHeaderSwitcher] = useState(true)
   const [chapterAudio, setChapterAudio] = useState<Audio | undefined>(undefined)
-  const [virsesTiming, setVirsesTiming] = useState([])
+  const [virsesTiming, setVirsesTiming] = useState<any>([])
 
 
   const cache = useRef(new CellMeasurerCache({
@@ -130,7 +131,7 @@ function ReadingRow({ chapter, paramId }: Props) {
       return;
     }
 
-    currentAudio.current.src = chapterAudio.audio_url;
+    currentAudio.current.src = chapterAudio?.audio_url;
     currentAudio.current.preload = 'auto';
 
     if (chapter && verse && word) {
@@ -153,7 +154,7 @@ function ReadingRow({ chapter, paramId }: Props) {
       if (currentTime >= verseData.timestamp_from && verseData.timestamp_to) {
         const verseNumber = verseData.verse_key.split(':')[1]
         setCurrentVerse(+verseNumber)
-        verseData.segments.map((seg) => {
+        verseData.segments.map((seg: any) => {
           if (currentTime >= seg[1] && currentTime <= seg[2]) {
             setActiveWords(seg[0])
           }
