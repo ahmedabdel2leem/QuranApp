@@ -21,27 +21,32 @@ function JuzsSurhsWrapper({ }: Props) {
       <Tab.Group>
         <Tab.List className="flex space-x-1 ">
           {reading.map((category, i) => (
-            <Tab
-              key={i}
-              className={({ selected }) =>
-                classNames(
-                  ' text-black p-2.5 text-sm font-medium leading-5',
-                  'ring-white/60  ring-offset-transparent-400 focus:outline-none ',
-                  selected
-                    ? 'bg-white text-primary border-b-[2.5px] border-primary'
-                    : 'text-green-900 hover:bg-white/[0.12] hover:text-primary'
-                )
-              }
-            >
-              {category}
-            </Tab>
+            <div key={i}>
+              <Tab
+
+                className={({ selected }) =>
+                  classNames(
+                    ' text-black p-2.5 text-sm font-medium leading-5',
+                    'ring-white/60  ring-offset-transparent-400 focus:outline-none ',
+                    selected
+                      ? 'bg-white text-primary border-b-[2.5px] border-primary'
+                      : 'text-green-900 hover:bg-white/[0.12] hover:text-primary'
+                  )
+                }
+              >
+                {category}
+              </Tab>
+            </div>
           ))}
         </Tab.List>
         <Tab.Panels className="mt-2">
           {components.map((compo: any, i: number) =>
-            <Tab.Panel key={i}>
-              {compo}
-            </Tab.Panel>
+            <div key={i}>
+              <Tab.Panel >
+                {compo}
+              </Tab.Panel>
+            </div>
+
           )}
         </Tab.Panels>
       </Tab.Group>
